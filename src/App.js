@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import fetchBookings from "./fetchBookings";
+
+import BookingsContainer from "./containers/BookingsContainer";
 
 class App extends Component {
   render() {
@@ -14,12 +15,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <BookingsContainer />
       </div>
     );
-  }
-
-  componentDidMount() {
-    fetchBookings("paris").then(data => console.log(data));
   }
 }
 

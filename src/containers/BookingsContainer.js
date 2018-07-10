@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { makeBookingsReceived } from "../actions";
 import fetchBookings from "../fetchBookings";
+import { Container, ListGroup, ListGroupItem } from "reactstrap";
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  bookings: state.bookings
+});
 
 const mapDispatchToProps = dispatch => ({
   onReceivedBookings: bookings => dispatch(makeBookingsReceived(bookings))
@@ -11,7 +14,15 @@ const mapDispatchToProps = dispatch => ({
 
 class BookingsList extends Component {
   render() {
-    return <div>Liste des bookings</div>;
+    return (
+      <Container>
+        <ListGroup>
+          {this.props.bookings.map(booking => (
+            <ListGroupItem>{booking.date}</ListGroupItem>
+          ))}
+        </ListGroup>
+      </Container>
+    );
   }
 
   componentDidMount() {

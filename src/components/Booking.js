@@ -1,21 +1,50 @@
-import React from "react";
-import { Card, CardText, CardBody, CardTitle, Button } from "reactstrap";
-import bookings from "../reducers/bookings";
+import React from "react"
+import {
+  Card,
+  CardText,
+  CardBody,
+  CardTitle,
+  Button,
+  ListGroup
+} from "reactstrap"
 
-const Booking = ({ date, city, name, email }) => {
+const { DateTime } = require("luxon")
+
+const Booking = ({ date, city, name, email, prestations }) => {
   return (
-    <div>
+    <div
+      style={{
+        margin: "auto",
+        marginTop: "20px"
+      }}
+    >
       <Card>
         <CardBody>
           <CardTitle>{city}</CardTitle>
-          <CardText>{date}</CardText>
-          <CardText>{name}</CardText>
-          <CardText>{email}</CardText>
-          <Button>Button</Button>
+          <CardText>Nom : {name}</CardText>
+          <CardText>Email : {email}</CardText>
+          <CardText
+            style={{
+              fontWeight: "bold",
+              fontSize: "1.2em"
+            }}
+          >
+            {DateTime.fromISO(date)
+              .setLocale("fr")
+              .toFormat("cccc dd LLLL HH 'h' mm")}
+          </CardText>
+          <ListGroup> {prestations}</ListGroup>
+          <Button
+            style={{
+              marginTop: "20px"
+            }}
+          >
+            Supprimer cette réservation
+          </Button>
         </CardBody>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default Booking;
+export default Booking

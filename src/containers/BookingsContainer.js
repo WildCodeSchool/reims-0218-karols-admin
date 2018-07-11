@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { makeBookingsReceived } from "../actions";
 import fetchBookings from "../fetchBookings";
 import { Container, ListGroup, ListGroupItem } from "reactstrap";
+import Booking from "../components/Booking";
 
 const mapStateToProps = state => ({
   bookings: state.bookings
@@ -18,7 +19,11 @@ class BookingsList extends Component {
       <Container>
         <ListGroup>
           {this.props.bookings.map(booking => (
-            <ListGroupItem>{booking.date}</ListGroupItem>
+            <Booking
+              {...booking}
+              name={booking.contact.firstName}
+              email={booking.contact.email}
+            />
           ))}
         </ListGroup>
       </Container>

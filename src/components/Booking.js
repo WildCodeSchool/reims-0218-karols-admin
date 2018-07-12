@@ -10,7 +10,15 @@ import {
 
 const { DateTime } = require("luxon")
 
-const Booking = ({ date, city, name, email, prestations }) => {
+const Booking = ({
+  date,
+  city,
+  name,
+  email,
+  prestations,
+  deleteBooking,
+  id
+}) => {
   return (
     <div
       style={{
@@ -35,6 +43,7 @@ const Booking = ({ date, city, name, email, prestations }) => {
           </CardText>
           <ListGroup> {prestations}</ListGroup>
           <Button
+            onClick={() => deleteBooking(id)}
             style={{
               marginTop: "20px"
             }}

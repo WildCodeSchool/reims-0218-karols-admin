@@ -1,2 +1,2 @@
 export default () =>
-  fetch(`http://localhost:8000/shops`).then(response => response.json())
+  fetch(`http://api.karolsresa.fr/shops`).then(response => response.json())

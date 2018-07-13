@@ -3,6 +3,7 @@ import logo from "./logo.svg"
 import "./App.css"
 
 import BookingsContainer from "./containers/BookingsContainer"
+import SelectShopContainer from "./containers/SelectShopContainer"
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Gestion des réservations</h1>
         </header>
+        <SelectShopContainer />
         <BookingsContainer />
       </div>
     )

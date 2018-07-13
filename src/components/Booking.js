@@ -8,6 +8,8 @@ import {
   ListGroup
 } from "reactstrap"
 
+import { fetchDeleteBooking } from "../api/fetchDeleteBooking"
+
 const { DateTime } = require("luxon")
 
 const Booking = ({
@@ -43,7 +45,11 @@ const Booking = ({
           </CardText>
           <ListGroup> {prestations}</ListGroup>
           <Button
-            onClick={() => deleteBooking(id)}
+            onClick={() =>
+              fetchDeleteBooking(id).then(response => {
+                return deleteBooking(response.bookingId)
+              })
+            }
             style={{
               marginTop: "20px"
             }}

@@ -20,7 +20,7 @@ class SelectShops extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
   handleChange(e) {
-    console.log(this.props.shops)
+    console.log(e.target.value)
   }
 
   render() {

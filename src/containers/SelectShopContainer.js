@@ -13,13 +13,28 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class SelectShops extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+
+    this.handleChange = this.handleChange.bind(this)
+  }
+  handleChange(e) {
+    console.log(this.props.shops)
+  }
+
   render() {
     return (
       <Container>
         <Row className="justify-content-center">
           <FormGroup>
             <Label for="selectShop">Select Multiple</Label>
-            <Input type="select" name="selectShop" id="selectShop">
+            <Input
+              type="select"
+              name="selectShop"
+              id="selectShop"
+              onChange={this.handleChange}
+            >
               {this.props.shops.map(shop => (
                 <option value={shop.city}>{shop.city}</option>
               ))}

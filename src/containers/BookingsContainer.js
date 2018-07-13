@@ -1,16 +1,19 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { makeBookingsReceived } from "../actions"
+import { makeBookingsReceived, makeDeletedBookingId } from "../actions"
 import fetchBookings from "../fetchBookings"
 import { Container, ListGroup, ListGroupItem, Row } from "reactstrap"
 import Booking from "../components/Booking"
+
+import { fetchDeleteBooking } from "../api/fetchDeleteBooking"
 
 const mapStateToProps = state => ({
   bookings: state.bookings
 })
 
 const mapDispatchToProps = dispatch => ({
-  onReceivedBookings: bookings => dispatch(makeBookingsReceived(bookings))
+  onReceivedBookings: bookings => dispatch(makeBookingsReceived(bookings)),
+  onDeleteBooking: id => dispatch(makeDeletedBookingId(id))
 })
 
 class BookingsList extends Component {
@@ -23,8 +26,10 @@ class BookingsList extends Component {
               <Booking
                 key={index}
                 {...booking}
+                id={booking._id}
                 name={booking.contact.firstName}
                 email={booking.contact.email}
+                deleteBooking={this.props.onDeleteBooking}
                 prestations={booking.prestations.map((prestation, index) => (
                   <ListGroupItem key={index} color="info">
                     {prestation.name} - {prestation.type} -{" "}

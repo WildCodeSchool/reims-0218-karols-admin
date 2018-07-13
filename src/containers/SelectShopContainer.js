@@ -1,15 +1,17 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import fetchShops from "../fetchShops"
-import { makeShopsReceived } from "../actions"
+import { makeShopsReceived, makeBookingsReceived } from "../actions"
 import { Container, Row, FormGroup, Label, Input } from "reactstrap"
+import fetchBookings from "../fetchBookings"
 
 const mapStateToProps = state => ({
   shops: state.shops
 })
 
 const mapDispatchToProps = dispatch => ({
-  onReceivedShops: shops => dispatch(makeShopsReceived(shops))
+  onReceivedShops: shops => dispatch(makeShopsReceived(shops)),
+  onReceivedBookings: bookings => dispatch(makeBookingsReceived(bookings))
 })
 
 class SelectShops extends Component {
@@ -21,6 +23,9 @@ class SelectShops extends Component {
   }
   handleChange(e) {
     console.log(e.target.value)
+    fetchBookings(e.target.value).then(bookings =>
+      this.props.onReceivedBookings(bookings)
+    )
   }
 
   render() {
@@ -35,8 +40,10 @@ class SelectShops extends Component {
               id="selectShop"
               onChange={this.handleChange}
             >
-              {this.props.shops.map(shop => (
-                <option value={shop.city}>{shop.city}</option>
+              {this.props.shops.map((shop, index) => (
+                <option key={index} value={shop.city}>
+                  {shop.city}
+                </option>
               ))}
             </Input>
           </FormGroup>

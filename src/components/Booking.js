@@ -8,9 +8,20 @@ import {
   ListGroup
 } from "reactstrap"
 
+import { fetchDeleteBooking } from "../api/fetchDeleteBooking"
+
 const { DateTime } = require("luxon")
 
-const Booking = ({ date, city, name, email, prestations }) => {
+const Booking = ({
+  date,
+  city,
+  name,
+  email,
+  phone,
+  prestations,
+  deleteBooking,
+  id
+}) => {
   return (
     <div
       style={{
@@ -23,6 +34,7 @@ const Booking = ({ date, city, name, email, prestations }) => {
           <CardTitle>{city}</CardTitle>
           <CardText>Nom : {name}</CardText>
           <CardText>Email : {email}</CardText>
+          <CardText>Phone : {phone}</CardText>
           <CardText
             style={{
               fontWeight: "bold",
@@ -35,6 +47,11 @@ const Booking = ({ date, city, name, email, prestations }) => {
           </CardText>
           <ListGroup> {prestations}</ListGroup>
           <Button
+            onClick={() =>
+              fetchDeleteBooking(id).then(response => {
+                return deleteBooking(response.bookingId)
+              })
+            }
             style={{
               marginTop: "20px"
             }}

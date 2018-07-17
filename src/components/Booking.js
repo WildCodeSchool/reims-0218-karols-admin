@@ -17,6 +17,7 @@ const Booking = ({
   city,
   name,
   email,
+  phone,
   prestations,
   deleteBooking,
   id
@@ -33,6 +34,7 @@ const Booking = ({
           <CardTitle>{city}</CardTitle>
           <CardText>Nom : {name}</CardText>
           <CardText>Email : {email}</CardText>
+          <CardText>Phone : {phone}</CardText>
           <CardText
             style={{
               fontWeight: "bold",

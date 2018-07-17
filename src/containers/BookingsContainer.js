@@ -29,11 +29,13 @@ class BookingsList extends Component {
                 id={booking._id}
                 name={booking.contact.firstName}
                 email={booking.contact.email}
+                phone={booking.contact.phone}
                 deleteBooking={this.props.onDeleteBooking}
                 prestations={booking.prestations.map((prestation, index) => (
                   <ListGroupItem key={index} color="info">
                     {prestation.name} - {prestation.type} -{" "}
-                    {prestation.duration.minutes} minutes
+                    {prestation.duration.minutes} minutes - Quantité:{" "}
+                    {prestation.count ? prestation.count : 1}
                   </ListGroupItem>
                 ))}
               />

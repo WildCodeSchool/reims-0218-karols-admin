@@ -1,11 +1,8 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { makeBookingsReceived, makeDeletedBookingId } from "../actions"
-import fetchBookings from "../fetchBookings"
 import { Container, ListGroup, ListGroupItem, Row } from "reactstrap"
 import Booking from "../components/Booking"
-
-import { fetchDeleteBooking } from "../api/fetchDeleteBooking"
 
 const mapStateToProps = state => ({
   bookings: state.bookings
@@ -43,12 +40,6 @@ class BookingsList extends Component {
           </ListGroup>
         </Row>
       </Container>
-    )
-  }
-
-  componentDidMount() {
-    fetchBookings("paris").then(bookings =>
-      this.props.onReceivedBookings(bookings)
     )
   }
 }

@@ -1,4 +1,4 @@
 export default city =>
-  fetch(`http://localhost:8000/bookings/${city}`).then(response =>
+  fetch(`${process.env.REACT_APP_SERVER_URL}/bookings/${city}`).then(response =>
     response.json()
-  );
+  )

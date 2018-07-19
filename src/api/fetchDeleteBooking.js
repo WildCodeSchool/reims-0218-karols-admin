@@ -1,5 +1,5 @@
 export const fetchDeleteBooking = id => {
-  return fetch(`http://localhost:8000/bookings/${id}`, {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/bookings/${id}`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",

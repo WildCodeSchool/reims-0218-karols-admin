@@ -52,7 +52,14 @@ class SelectShops extends Component {
   }
 
   componentDidMount() {
-    fetchShops().then(shops => this.props.onReceivedShops(shops))
+    fetchShops().then(shops => {
+      this.props.onReceivedShops(shops)
+      if (shops[0]) {
+        fetchBookings(shops[0].city).then(bookings =>
+          this.props.onReceivedBookings(bookings)
+        )
+      }
+    })
   }
 }
 

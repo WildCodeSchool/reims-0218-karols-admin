@@ -31,8 +31,15 @@ class BookingsList extends Component {
                 prestations={booking.prestations.map((prestation, index) => (
                   <ListGroupItem key={index} color="info">
                     {prestation.name} - {prestation.type} -{" "}
-                    {prestation.duration.minutes} minutes - Quantité:{" "}
-                    {prestation.count ? prestation.count : 1}
+                    {prestation.duration.minutes && (
+                      <span> {prestation.duration.minutes} minutes - </span>
+                    )}
+                    {prestation.duration.hours && (
+                      <span> {prestation.duration.hours} hours - </span>
+                    )}Quantité: {prestation.count ? prestation.count : 1}
+                    {prestation.people && (
+                      <span> Nombre de personnes: {prestation.people}</span>
+                    )}
                   </ListGroupItem>
                 ))}
               />

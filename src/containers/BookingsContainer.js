@@ -5,8 +5,6 @@ import fetchBookings from "../fetchBookings"
 import { Container, ListGroup, ListGroupItem, Row } from "reactstrap"
 import Booking from "../components/Booking"
 
-import { fetchDeleteBooking } from "../api/fetchDeleteBooking"
-
 const mapStateToProps = state => ({
   bookings: state.bookings
 })

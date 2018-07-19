@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import fetchShops from "../fetchShops"
+import fetchShops from "../api/fetchShops"
 import { makeShopsReceived, makeBookingsReceived } from "../actions"
 import { Container, Row, FormGroup, Label, Input } from "reactstrap"
-import fetchBookings from "../fetchBookings"
+import fetchBookings from "../api/fetchBookings"
 
 const mapStateToProps = state => ({
   shops: state.shops
@@ -22,7 +22,6 @@ class SelectShops extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
   handleChange(e) {
-    console.log(e.target.value)
     fetchBookings(e.target.value).then(bookings =>
       this.props.onReceivedBookings(bookings)
     )

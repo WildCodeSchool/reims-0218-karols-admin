@@ -4,6 +4,7 @@ export const fetchDeleteBooking = id => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
-    }
+    },
+    credentials: "include"
   }).then(response => response.json())
 }
